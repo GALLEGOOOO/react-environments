@@ -2,23 +2,26 @@ import { useEffect, useState } from "react";
 import personService from "../services/personService";
 
 export const usePersons = () => {
-    const [persons, setPersons] = useState([]);
+  const [persons, setPersons] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const handleNewPersonsValue = (newValue) => {
-        setPersons(newValue)
-    }
+  const handleNewPersonsValue = (newValue) => {
+    setPersons(newValue);
+  };
 
-    useEffect( () => {
-        personService.getAllPersons()
-            .then((data) => {
-                handleNewPersonsValue(data)
-            })
-            .catch((error) => alert(`ERROR: ${error}`));
-    }, [])
+  useEffect(() => {
+    personService
+      .getAllPersons()
+      .then((data) => {
+        handleNewPersonsValue(data);
+      })
+      .catch((error) => alert(`ERROR: ${error}`))
+      .finally(() => setLoading(false));
+  }, []);
 
-    return {
-        persons,
-        handleNewPersonsValue
-    };
-}
-
+  return {
+    persons,
+    handleNewPersonsValue,
+    loading,
+  };
+};
