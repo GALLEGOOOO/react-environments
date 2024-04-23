@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.VITE_BASE_URL;
+const baseUrl = "https://json-server-deploy-1iom.onrender.com/personasProduction";
 
 const getAllPersons = () => {
     return fetch(baseUrl).then((response) => response.json())
