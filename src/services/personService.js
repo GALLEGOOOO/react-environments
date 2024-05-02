@@ -1,8 +1,7 @@
-const baseUrl = 'http://localhost:3001/persons';
+const baseUrl = "https://json-server-deploy-1iom.onrender.com/personasProduction";
 
 const getAllPersons = () => {
-    return fetch(baseUrl)
-        .then((response) => response.json())
+    return fetch(baseUrl).then((response) => response.json())
 }
 
 const createPerson = (newPerson) => {
