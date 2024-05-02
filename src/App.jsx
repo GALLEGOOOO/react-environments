@@ -5,11 +5,12 @@ const App = () => {
   const { newName, newNumber, handleNewNameValue, handleNewNumberValue } =
     useForm();
   const { newFilter, handleNewFilterValue } = useFormFilter();
-  const { persons, handleNewPersonsValue, loading } = usePersons();
+  const { persons, handleNewPersonsValue, loading, handleCounter, counter } = usePersons();
 
   return (
     <div>
       <h2>{import.meta.env.VITE_TITLE}</h2>
+      <button onClick ={handleCounter}>{counter}</button>
       <Filter setNewFilter={handleNewFilterValue} />
       <PersonForm
         newName={newName}
